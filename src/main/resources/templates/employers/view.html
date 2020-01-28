@@ -8,10 +8,12 @@
 <nav th:replace="fragments :: page-header"></nav>
 
 <div class="job-listing">
-    <p th:text="${'Name: ' + employer.name}"></p>
-    <p th:text="${'Location: ' + employer.location}"></p>
-</div>
+    <p><span>Name: </span><span th:text="${employer.name}"></span></p>
+    <p><span>Location: </span><span th:text="${employer.location}"></span></p>
+<!--    <br />-->
+<!--    <a th:href="@{../list/jobs(column=employer,value=${employer.name})}" th:text="View all jobs at ${employer.name}"></a>-->
 
+</div>
 
 </body>
 </html>

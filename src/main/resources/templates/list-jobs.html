@@ -14,16 +14,16 @@
         <tr th:each="job : ${jobs}">
             <td>
                 <p>
-                    Job Id:
+                    <span>Job Id:</span>
                     <a th:href="@{'/view/' + ${job.id}}" th:text="${job.id}"></a>
                 </p>
-                <p th:text="${'Name: ' + job.name}"></p>
+                <p><span>Job Title: </span><span th:text="${job.name}"></span></p>
                 <p>
-                    Employer:
+                    <span>Employer: </span>
                     <a th:href="@{'/employers/view/' + ${job.employer.id}}" th:text="${job.employer.name}"></a>
                 </p>
                 <p>
-                    Skills:
+                    <span>Skills: </span>
                     <ul th:each="skill : ${job.skills}">
                         <li>
                             <a th:href="@{'/skills/view/' + ${skill.id}}" th:text="${skill.name}"></a>
