@@ -36,17 +36,17 @@ public class JobData {
 
         // Shivany helped me add this to check in one skill out of list of skills in each job
         // it bypasses getFieldValue() since that can't handle the nested object
-        if (column.equals("skill")) {
-            for (Job job: allJobs) {
-                for (Skill skill: job.getSkills()) {
-                    if (skill.getName().toLowerCase().contains(value.toLowerCase())) {
-                        results.add(job);
-                        break;
-                    }
-                }
-            }
-            return results;
-        }
+//        if (column.equals("skill")) {
+//            for (Job job: allJobs) {
+//                for (Skill skill: job.getSkills()) {
+//                    if (skill.getName().toLowerCase().contains(value.toLowerCase())) {
+//                        results.add(job);
+//                        break;
+//                    }
+//                }
+//            }
+//            return results;
+//        }
 
         else {
             for (Job job : allJobs) {
@@ -64,12 +64,12 @@ public class JobData {
 
     public static String getFieldValue(Job job, String fieldName){
         String theValue;
-        if (fieldName.equals("name")){ // this is checking against job.name, not skill.name
+        if (fieldName.equals("name")){
             theValue = job.getName();
         } else if (fieldName.equals("employer")){
             theValue = job.getEmployer().toString();
         } else {
-            theValue = job.toString(); // ???
+            theValue = job.getSkills().toString(); // LC fix on 1/28
         }
 
         return theValue;

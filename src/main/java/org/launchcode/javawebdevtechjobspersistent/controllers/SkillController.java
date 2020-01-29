@@ -1,8 +1,5 @@
 package org.launchcode.javawebdevtechjobspersistent.controllers;
 
-import org.launchcode.javawebdevtechjobspersistent.models.Employer;
-import org.launchcode.javawebdevtechjobspersistent.models.Job;
-import org.launchcode.javawebdevtechjobspersistent.models.JobData;
 import org.launchcode.javawebdevtechjobspersistent.models.Skill;
 import org.launchcode.javawebdevtechjobspersistent.models.data.JobRepository;
 import org.launchcode.javawebdevtechjobspersistent.models.data.SkillRepository;
@@ -13,8 +10,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 @RequestMapping("skills")
@@ -62,4 +58,5 @@ public class SkillController {
             return "redirect:../";
         }
     }
+
 }
