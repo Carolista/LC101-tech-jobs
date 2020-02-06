@@ -9,6 +9,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.util.Collections;
+import java.util.List;
+
 import static org.launchcode.javawebdevtechjobspersistent.controllers.ListController.columnChoices;
 
 /**
@@ -29,11 +32,13 @@ public class SearchController {
 
     @PostMapping("results")
     public String displaySearchResults(Model model, @RequestParam String searchType, @RequestParam String searchTerm){
-        Iterable<Job> jobs;
+        List jobs;
         if (searchTerm.toLowerCase().equals("all") || searchTerm.equals("")){
-            jobs = jobRepository.findAll();
+            jobs = (List<Job>) jobRepository.findAll();
+            Collections.sort(jobs);
         } else {
             jobs = JobData.findByColumnAndValue(searchType, searchTerm, jobRepository.findAll());
+            Collections.sort(jobs);
         }
         model.addAttribute("columns", columnChoices);
         model.addAttribute("title", "Jobs with " + columnChoices.get(searchType) + ": " + searchTerm);

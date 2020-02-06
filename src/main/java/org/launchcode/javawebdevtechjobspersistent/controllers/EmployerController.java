@@ -1,6 +1,7 @@
 package org.launchcode.javawebdevtechjobspersistent.controllers;
 
 import org.launchcode.javawebdevtechjobspersistent.models.Employer;
+import org.launchcode.javawebdevtechjobspersistent.models.Skill;
 import org.launchcode.javawebdevtechjobspersistent.models.data.EmployerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,8 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -21,7 +24,9 @@ public class EmployerController {
     @GetMapping
     public String displayAllEmployers(Model model) {
         model.addAttribute("title", "All Employers");
-        model.addAttribute("employers", employerRepository.findAll());
+        List employers = (List<Employer>) employerRepository.findAll();
+        Collections.sort(employers);
+        model.addAttribute("employers", employers );
         return "employers/index";
     }
 

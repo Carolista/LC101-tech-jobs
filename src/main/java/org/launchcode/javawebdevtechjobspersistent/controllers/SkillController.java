@@ -1,5 +1,6 @@
 package org.launchcode.javawebdevtechjobspersistent.controllers;
 
+import org.launchcode.javawebdevtechjobspersistent.models.Employer;
 import org.launchcode.javawebdevtechjobspersistent.models.Skill;
 import org.launchcode.javawebdevtechjobspersistent.models.data.JobRepository;
 import org.launchcode.javawebdevtechjobspersistent.models.data.SkillRepository;
@@ -25,7 +26,10 @@ public class SkillController {
     @GetMapping
     public String displayAllSkills(Model model) {
         model.addAttribute("title", "All Skills");
-        model.addAttribute("skills", skillRepository.findAll());
+
+        List skills = (List<Skill>) skillRepository.findAll();
+        Collections.sort(skills);
+        model.addAttribute("skills", skills);
         return "skills/index";
     }
 
